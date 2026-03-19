@@ -1,4 +1,4 @@
-name: Docker Build
+name: Docker CI
 
 on:
   push:
@@ -14,3 +14,9 @@ jobs:
 
     - name: Build Docker
       run: docker build -t micro:latest .
+
+    - name: Run container
+      run: docker run -d -p 5000:5000 micro:latest
+
+    - name: Test app
+      run: curl http://localhost:5000
