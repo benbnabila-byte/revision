@@ -1,7 +1,11 @@
-FROM python:3.14
-LABEL maintainer="toto@provider.com>"
-COPY ./requirements.txt /app/requirements.txt
+FROM python:3.10
+
 WORKDIR /app
+
+COPY . .
+
 RUN pip install -r requirements.txt
-COPY . /app
-CMD [ "python", "./mod_main.py" ]
+
+EXPOSE 5000
+
+CMD ["python", "mod_main.py"]
